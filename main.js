@@ -154,8 +154,3 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('firstLoad', 'false');
     }
 });
-
-// Limpar o localStorage ao fechar a aba do navegador
-window.addEventListener('beforeunload', function () {
-    localStorage.removeItem('markers');
-});
