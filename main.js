@@ -28,6 +28,18 @@ function logout() {
     window.location.href = "index.html";
 }
 
+// Função para deletar o marcador
+function deleteMarker(layer) {
+    const markers = JSON.parse(localStorage.getItem('markers')) || [];
+    const latlng = layer.getLatLng();
+    const index = markers.findIndex(marker => marker.latlng.lat === latlng.lat && marker.latlng.lng === latlng.lng);
+    if (index !== -1) {
+        markers.splice(index, 1);
+        localStorage.setItem('markers', JSON.stringify(markers));
+        map.removeLayer(layer);
+    }
+}
+
 // Função para salvar o marcador
 function saveMarker(map, layer, title, description, createdBy) {
     // Criar conteúdo do pop-up do marcador
@@ -54,7 +66,9 @@ function saveMarker(map, layer, title, description, createdBy) {
 
         if (createdBy === localStorage.getItem('username')) {
             document.getElementById('deleteMarkerBtn').addEventListener('click', function () {
-                deleteMarker(layer);
+                deleteMarker(layer); // Chamar função para deletar o marcador
+                map.closePopup(); // Fechar o popup após deletar
+                location.reload();
             });
         }
     });
@@ -69,18 +83,6 @@ function saveMarker(map, layer, title, description, createdBy) {
         createdAt: new Date().toLocaleString()
     });
     localStorage.setItem('markers', JSON.stringify(markers));
-}
-
-// Função para deletar o marcador
-function deleteMarker(layer) {
-    const markers = JSON.parse(localStorage.getItem('markers')) || [];
-    const latlng = layer.getLatLng();
-    const index = markers.findIndex(marker => marker.latlng.lat === latlng.lat && marker.latlng.lng === latlng.lng);
-    if (index !== -1) {
-        markers.splice(index, 1);
-        localStorage.setItem('markers', JSON.stringify(markers));
-        map.removeLayer(layer);
-    }
 }
 
 // Função para limpar o LocalStorage
