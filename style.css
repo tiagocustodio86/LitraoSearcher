@@ -1,0 +1,58 @@
+body {
+    background-color: #f8f9fa; /* Fundo cinza claro */
+    color: #343a40; /* Texto escuro */
+}
+
+.navbar {
+    background-color: #ffc107 !important; /* Amarelo */
+}
+
+.navbar-brand {
+    color: #343a40; /* Texto escuro */
+    font-weight: bold;
+}
+
+.navbar-brand img {
+    margin-right: 5px; /* Espaço entre o logo e o texto */
+}
+
+.navbar-nav .btn-danger {
+    margin-left: 10px; /* Espaço entre o botão de logout e outros elementos */
+}
+
+.container {
+    background-color: #ffffff; /* Fundo branco para o conteúdo */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.card {
+    margin-bottom: 20px; /* Espaçamento entre cartões */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave nos cartões */
+}
+
+.btn-primary {
+    background-color: #ffc107; /* Amarelo */
+    border-color: #ffc107; /* Borda amarela */
+}
+
+.btn-primary:hover {
+    background-color: #ffca2c; /* Amarelo claro ao passar o mouse */
+    border-color: #ffca2c; /* Borda amarela clara ao passar o mouse */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Vermelho */
+    border-color: #dc3545; /* Borda vermelha */
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Vermelho mais escuro ao passar o mouse */
+    border-color: #c82333; /* Borda vermelha mais escura ao passar o mouse */
+}
+
+#map {
+    border: 1px solid #dee2e6; /* Borda cinza claro ao redor do mapa */
+    border-radius: 5px;
+}
