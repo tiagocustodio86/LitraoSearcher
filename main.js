@@ -83,15 +83,15 @@ function deleteMarker(layer) {
     }
 }
 
-// Inicializar mapa e funcionalidades ao carregar app.html
-document.addEventListener('DOMContentLoaded', function () {
-    if (window.location.pathname.includes("app.html")) {
-        const username = localStorage.getItem("username");
-        if (username) {
+// Verificar se o usuário está logado ao carregar app.html
+if (window.location.pathname.includes("app.html")) {
+    const username = localStorage.getItem("username");
+    if (username) {
+        document.addEventListener('DOMContentLoaded', function () {
             document.getElementById("usernameDisplay").innerText = username;
 
-            // Inicializar o mapa centralizado em Toledo, PR, Brazil (coordenadas aproximadas)
-            const map = L.map('map').setView([-24.7136, -53.7435], 13);
+            // Inicializar o mapa
+            const map = L.map('map').setView([51.505, -0.09], 13);
 
             // Adicionar camada de azulejos OpenStreetMap
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -133,12 +133,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 const markerLayer = L.marker(marker.latlng);
                 saveMarker(map, markerLayer, marker.title, marker.description, marker.createdBy); // Passar createdBy como argumento
             });
-        } else {
-            // Se não estiver logado, redirecionar para a página de login
-            window.location.href = "index.html";
-        }
+        });
+    } else {
+        // Se não estiver logado, redirecionar para a página de login
+        window.location.href = "index.html";
     }
-});
+}
 
 // Adicionar o ouvinte de evento para o formulário de login
 document.addEventListener('DOMContentLoaded', function () {
@@ -153,4 +153,9 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.removeItem('markers');
         localStorage.setItem('firstLoad', 'false');
     }
+});
+
+// Limpar o localStorage ao fechar a aba do navegador
+window.addEventListener('beforeunload', function () {
+    localStorage.removeItem('markers');
 });
