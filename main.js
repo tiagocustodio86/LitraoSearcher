@@ -83,10 +83,24 @@ function deleteMarker(layer) {
     }
 }
 
+// Função para limpar o LocalStorage
+function clearLocalStorage() {
+    localStorage.clear();
+    // Após limpar, redirecionar para o login
+    window.location.href = "index.html";
+}
+
 // Verificar se o usuário está logado ao carregar app.html
 if (window.location.pathname.includes("app.html")) {
     const username = localStorage.getItem("username");
     if (username) {
+        // Verificar se o usuário é admin para exibir o botão Limpar LocalStorage
+        const isAdmin = username === "admin";
+        if (isAdmin) {
+            document.getElementById("clearLocalStorageBtn").style.display = "block";
+        }
+
+        // Restante do código para carregar o conteúdo do app.html
         document.addEventListener('DOMContentLoaded', function () {
             document.getElementById("usernameDisplay").innerText = username;
 

@@ -21,14 +21,19 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <span id="usernameDisplay" class="navbar-text mr-3"></span>
+                </li>
+                <li class="nav-item">
                     <button class="btn btn-danger" onclick="logout()">Logout</button>
+                </li>
+                <li class="nav-item">
+                    <button id="clearLocalStorageBtn" class="btn btn-warning ml-2" onclick="clearLocalStorage()" style="display: none;">Limpar LocalStorage</button>
                 </li>
             </ul>
         </div>
     </nav>
 
     <div class="container mt-5">
-        <h2 class="text-center">Olá, <span id="usernameDisplay"></span>!</h2>
         <div id="map" class="mt-4" style="height: 500px;"></div>
     </div>
 
@@ -42,6 +47,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Main JS -->
     <script src="main.js"></script>
 </body>
 </html>
